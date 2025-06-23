@@ -1,7 +1,7 @@
 
 const express = require("express");
 const router = express.Router();
-const studentController = require("../controllers/studentController");
+const studentController = require("./../controller/studentController");
 
 router.get('/',studentController.getAll);
 router.get('/search/:name',studentController.searchByName);
