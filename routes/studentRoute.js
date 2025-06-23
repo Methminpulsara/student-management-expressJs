@@ -1,12 +1,13 @@
 const express = require('express');
-const router = express.Router();
-const StudentController = require('../controller/studentController');
+const router = express.Router(); // ✅ This is the correct way
 
-router.get('/', StudentController.getAll);
-router.get('/search/:name', StudentController.searchByName);
-router.get('/:id', StudentController.getById);
-router.post('/', StudentController.create);
-router.put('/:id', StudentController.update);
-router.delete('/:id', StudentController.delete);
+const studentController = require('../controller/studentController'); // adjust path as needed
+
+// Example routes
+router.get('/', studentController.getAll);
+router.post('/', studentController.create);
+router.get('/:id', studentController.getById);
+router.put('/:id', studentController.update);
+router.delete('/:id', studentController.delete);
 
 module.exports = router;
