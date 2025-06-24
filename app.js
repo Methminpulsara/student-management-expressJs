@@ -1,27 +1,18 @@
 const express = require('express');
-const dotenv = require('dotenv');
-const studentRoutes = require('./routes/studentRoute');
-const cors = require('cors'); // Optional if using frontend
-
-// Load environment variables
-dotenv.config();
+const bodyParser = require("body-parser");
+const studentRouter = require('./routes/studentRoute')
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const port = 3000;
 
-// Middleware
-app.use(cors()); // Optional, enable only if frontend runs on different port
-app.use(express.json()); // Parses JSON body
+app.use(bodyParser.json());
+app.use('/students',studentRouter)
 
-// Routes
-//app.use('/students', studentRoutes);
+app.get('/',(req,res)=>{
+  res.send("hello world");
+})
 
-// Root route
-app.get('/', (req, res) => {
-  res.send('👋 Hello! Student Management API is working.');
-});
 
-// Start server
-app.listen(PORT, () => {
-  console.log(`✅ Server running on http://localhost:${PORT}`);
+app.listen(port, () => {
+    console.log(`Server is running on port ${port}`);
 });

@@ -6,7 +6,7 @@ const StudentModel = {
   },
 
   getByName: (name, callback) => {
-    db.query('SELECT * FROM students WHERE name LIKE ?', [`%${name}%`], callback);
+    db.query('SELECT * FROM students WHERE name Like  ?', [`%${name}%`], callback);
   },
 
   getById: (id, callback) => {

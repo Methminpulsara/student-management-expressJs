@@ -7,6 +7,7 @@ const studentController = require('../controller/studentController'); // adjust 
 router.get('/', studentController.getAll);
 router.post('/', studentController.create);
 router.get('/:id', studentController.getById);
+router.get("/search/:name", studentController.searchByName);
 router.put('/:id', studentController.update);
 router.delete('/:id', studentController.delete);
 

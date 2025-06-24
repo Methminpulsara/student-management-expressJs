@@ -1,8 +1,8 @@
-const StudentService = require('../service/studentService');
+const studentService = require("../service/studentService");
 
-const StudentController = {
+const studentController = {
   getAll: (req, res) => {
-    StudentService.getAllStudents((err, results) => {
+    studentService.getAllStudents((err, results) => {
       if (err) return res.status(500).send(err);
       res.json(results);
     });
@@ -10,7 +10,7 @@ const StudentController = {
 
   searchByName: (req, res) => {
     const name = req.params.name;
-    StudentService.searchStudentsByName(name, (err, results) => {
+    studentService.searchStudentsByName(name, (err, results) => {
       if (err) return res.status(500).send(err);
       res.json(results);
     });
@@ -18,7 +18,7 @@ const StudentController = {
 
   getById: (req, res) => {
     const id = req.params.id;
-    StudentService.getStudentById(id, (err, results) => {
+    studentService.getStudentById(id, (err, results) => {
       if (err) return res.status(500).send(err);
       if (results.length === 0) return res.status(404).send('Student not found');
       res.json(results[0]);
@@ -27,7 +27,7 @@ const StudentController = {
 
   create: (req, res) => {
     const student = req.body;
-    StudentService.createStudent(student, (err, result) => {
+    studentService.createStudent(student, (err, result) => {
       if (err) return res.status(500).send(err);
       res.status(201).send({ id: result.insertId, ...student });
     });
@@ -36,7 +36,7 @@ const StudentController = {
   update: (req, res) => {
     const id = req.params.id;
     const student = req.body;
-    StudentService.updateStudent(id, student, (err) => {
+    studentService.updateStudent(id, student, (err) => {
       if (err) return res.status(500).send(err);
       res.send('Student updated');
     });
@@ -44,11 +44,11 @@ const StudentController = {
 
   delete: (req, res) => {
     const id = req.params.id;
-    StudentService.deleteStudent(id, (err) => {
+    studentService.deleteStudent(id, (err) => {
       if (err) return res.status(500).send(err);
       res.send('Student deleted');
     });
   }
 };
 
-module.exports = StudentController;
+module.exports = studentController;
