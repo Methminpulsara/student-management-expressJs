@@ -14,4 +14,5 @@ const StudentService = {
   deleteStudent: (id, cb) => StudentModel.delete(id, cb),
 };
 
+
 module.exports = StudentService;
