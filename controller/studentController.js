@@ -8,7 +8,6 @@ const studentController = {
     });
   },
 
-
   searchByName: (req, res) => {
     const name = req.params.name;
     studentService.searchStudentsByName(name, (err, results) => {
@@ -17,7 +16,6 @@ const studentController = {
     });
   },
   
-
   getById: (req, res) => {
     const id = req.params.id;
     studentService.getStudentById(id, (err, results) => {
