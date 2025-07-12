@@ -3,7 +3,6 @@ const router = express.Router(); // ✅ This is the correct way
 
 const studentController = require('../controller/studentController'); // adjust path as needed
 
-// Example routes
 router.get('/', studentController.getAll);
 router.post('/', studentController.create);
 router.get('/:id', studentController.getById);

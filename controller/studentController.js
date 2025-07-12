@@ -28,25 +28,28 @@ const studentController = {
   create: (req, res) => {
     const student = req.body;
     studentService.createStudent(student, (err, result) => {
+      student.id=null;
       if (err) return res.status(500).send(err);
       res.status(201).send({ id: result.insertId, ...student });
     });
   },
 
-  update: (req, res) => {
-    const id = req.params.id;
-    const student = req.body;
-    studentService.updateStudent(id, student, (err) => {
-      if (err) return res.status(500).send(err);
-      res.send('Student updated');
-    });
-  },
+update: (req, res) => {
+  const id = req.params.id;
+  const data = req.body;
+
+  studentService.updateStudent(id, data, (err, result) => {
+    if (err) return res.status(500).json({ message: 'Error updating student' });
+
+    res.status(200).json({ message: 'Student updated successfully' });
+  });
+},
 
   delete: (req, res) => {
     const id = req.params.id;
     studentService.deleteStudent(id, (err) => {
       if (err) return res.status(500).send(err);
-      res.send('Student deleted');
+      res.status(200).json({ message: "Student deleted" });
     });
   }
 };
